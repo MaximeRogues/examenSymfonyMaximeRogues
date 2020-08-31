@@ -14,16 +14,28 @@ class ArticleController extends AbstractController
 {
     /**
      * @Route("/articles", name="articles")
+     * @Route("/articles/{page}", name="articlesPaginate")
      */
-    public function index()
+    public function index($page = 1)
     {
         $articleRepo = $this->getDoctrine()->getRepository(Article::class);
         $articles = $articleRepo->findAll();
 
+        $nbPerPage = 12;
+        $nbArticles = $articleRepo->count([]);
+        $nbPages = $nbArticles / $nbPerPage;
+        $nbPages = ceil($nbPages);
+
+        $articles = $articleRepo->paginate($nbPerPage, $page);
+
         return $this->render('article/index.html.twig', [
-            'articles' => $articles
+            'articles' => $articles,
+            'nbPages' => $nbPages,
+            'page' => $page
         ]);
     }
+
+    
 
     /**
      * @Route("/article/{id}", name="detailArticle")

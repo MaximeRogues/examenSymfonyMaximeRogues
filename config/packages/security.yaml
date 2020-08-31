@@ -37,6 +37,8 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/articles, roles:  [IS_ANONYMOUS, ROLE_USER]}
+        - { path: ^/articles/[0-9]+, roles:  [IS_ANONYMOUS, ROLE_USER]}
         - { path: ^/add/article, roles: ROLE_USER }
         - { path: ^/login, roles: IS_ANONYMOUS }
         - { path: ^/logout, roles: ROLE_USER }

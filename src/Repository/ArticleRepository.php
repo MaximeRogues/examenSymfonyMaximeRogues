@@ -19,6 +19,15 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function paginate($nbArticles, $pageActuelle){
+        return $this->createQueryBuilder('article')
+        // le num du premier résultat de ma page est mon nombre d'activités * mon num de page -1
+        ->setFirstResult($nbArticles * ($pageActuelle - 1))
+        ->setMaxResults($nbArticles)
+        ->getQuery()
+        ->getResult();
+    }
+
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */

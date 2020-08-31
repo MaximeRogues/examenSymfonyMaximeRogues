@@ -31,5 +31,15 @@
         </div>
       </div>
     {% endfor %}
+
+    
+
 </div>
+<div class="text-center">
+  {% for i in 1..nbPages  %}
+    <a href="{{ path('articlesPaginate', {'page' : i }) }}" class="m-2 btn btn-info">Page {{ i }}</a>
+    {% endfor %}
+</div>
+
+
 {% endblock %}
