@@ -1,0 +1,10 @@
+#listeArticles {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+ body {
+    background-color: lightblue;
+    font-family:  'Gayathri' !important;
+}

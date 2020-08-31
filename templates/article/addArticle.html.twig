@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AddArticleController!{% endblock %}
+
+{% block body %}
+<br>
+<a href="{{path('articles')}}" class="btn btn-danger">Retour à la liste d'articles </a>
+<br>
+<h2 class="text-center">Ajouter un article</h2>
+<br>
+
+<div class="text-center p-5">
+   {{form_start(form)}}
+        {{ form_label(form.title, 'Titre de l\'article') }}
+        {{ form_widget(form.title)}}
+        <br>
+        {{ form_errors(form.title) }}
+        <br>
+        {{ form_label(form.text, 'Texte de l\'article') }}
+        {{ form_widget(form.text)}} 
+        <br>
+        {{ form_errors(form.text) }}
+        <br>
+        {{ form_label(form.picture, 'Illustration de l\'article') }}
+        {{ form_widget(form.picture)}}
+        <br>
+        {{ form_errors(form.picture) }}
+
+        {{ form_row(form.Ajouter) }}
+
+       
+
+   {{form_end(form)}}
+
+</div>
+{% endblock %}

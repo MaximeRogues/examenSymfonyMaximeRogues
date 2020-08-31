@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DetailArticleController!{% endblock %}
+
+{% block body %}
+<br>
+<a href="{{path('articles')}}" class="btn btn-danger ml-3">Retour à la liste d'articles </a>
+<br>
+<h2 class="text-center">{{article.title}}</h2>
+<br><br>
+
+<div class="text-center">
+    <img src="{{asset('pictures/' ~ article.picture) }}" alt="Illustration de l'article" style="width: 75%; height: 25rem" >
+    <br> <br>
+    <p>{{article.text}}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+ {% block stylesheets %}
+     {{ parent() }}
+{% endblock %}
+
+{% block body %}
+<br>
+<h2 class="text-center">Les articles :</h2>
+<br><br>
+
+{% if not app.user %}
+    <a href="{{path('app_login')}}" class="btn btn-success ml-3">Se connecter</a>
+{% endif %}
+
+{% if app.user and "ROLE_USER" in app.user.roles %}
+    <a href="{{path('app_logout')}}" class="btn btn-danger ml-3">Déconnexion</a>
+    <a href="{{path('addArticle')}}" class="btn btn-success">Ajouter un article</a>
+{% endif %}
+
+<div class="p-2 text-center" id="listeArticles">
+
+    {% for article in articles %}
+    <div class="card m-2" style="width: 19rem; height: 18rem">
+        <a href="{{path('detailArticle', {'id': article.id})}}"><img class="card-img-top" src="{{asset('pictures/' ~ article.picture) }}"  alt="Illustration de l'article" style="height: 11rem;" > </a>
+        <div class="card-body text-center" >
+          <h5 class="card-text">{{article.title }}</h5>
+          <!-- <a href="{{path('detailArticle', {'id': article.id})}}" class="btn btn-info">Détails de l'article</a> -->
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock %}
