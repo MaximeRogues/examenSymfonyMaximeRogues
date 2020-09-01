@@ -41,19 +41,16 @@ class SecurityControllerTest extends WebTestCase {
         $this->assertEquals(403, $client->getResponse()->getStatusCode());
     }
 
-    public function testSubmitValidData() {
-        $formData = ['title' => 'Le titre', 'text' => 'Le texte', 'picture' => 'article.png'];
-        $model = new Article();
+//      public function testSubmitValidData() {
+//         $formData = ['title' => 'Le titre', 'text' => 'Le texte', 'picture' => 'article.png'];
+//         $model = new Article();
 
-        $form = $this->factory->create(TestedType::class, $model);
-        $expected = new Article();
-        $form->submit($formData);
-        $this->assertTrue($form->isSynchronized());
-        $this->assertEquals($expected, $model);
+//         $form = $this->factory->create(TestedType::class, $model);
+//         $expected = new Article();
+//         $form->submit($formData);
+//         $this->assertTrue($form->isSynchronized());
+//         $this->assertEquals($expected, $model);
 
-
-
-
-    }
+//     }
 }
 ?>
